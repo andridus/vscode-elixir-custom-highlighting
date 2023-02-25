@@ -1,0 +1,127 @@
+{
+  "injectionSelector": "L:source.elixir -comment -text -string",
+  "name": "elixir-custom",
+  "patterns": [
+    {
+      "comment": "Typed Function with parameters",
+      "begin": "\\b(deft)\\b\\s*([_$a-z][$\\w]*[!?]?)\\s*\\(",
+      "name": "meta.function.definition.elixir",
+      "beginCaptures": {
+        "1": {
+          "name": "keyword.control.elixir"
+        },
+        "2": {
+          "name": "entity.name.function.elixir"
+        }
+      },
+      "end": "\\)",
+      "patterns": [
+        {
+          "include": "$self"
+        },
+        {
+          "include": "#function_parameter_typed"
+        }
+      ]
+    },
+    {
+      "comment": "Typed Function without parameters",
+      "match": "\\b(deft|defmacrot)\\b\\s*([_$a-z][$\\w]*[!?]?)",
+      "name": "meta.function.definition.elixir",
+      "captures": {
+        "1": {
+          "name": "keyword.control.elixir"
+        },
+        "2": {
+          "name": "entity.name.function.elixir"
+        }
+      }
+    },
+    {
+      "comment": "Typed Private Function with parameters",
+      "begin": "\\b(defpt)\\b\\s*([_$a-z][$\\w]*[!?]?)\\s*\\(",
+      "name": "meta.function.definition.elixir",
+      "beginCaptures": {
+        "1": {
+          "name": "keyword.control.elixir"
+        },
+        "2": {
+          "name": "variable.other.readwrite"
+        }
+      },
+      "end": "\\)",
+      "patterns": [
+        {
+          "include": "$self"
+        },
+        {
+          "include": "#function_parameter_typed"
+        }
+      ]
+    },
+    {
+      "comment": "Typed Function without parameters",
+      "match": "\\b(defpt|defmacropt)\\b\\s*([_$a-z][$\\w]*[!?]?)",
+      "name": "meta.function.definition.elixir",
+      "captures": {
+        "1": {
+          "name": "keyword.control.elixir"
+        },
+        "2": {
+          "name": "variable.other.readwrite"
+        }
+      }
+    },
+    {
+      "comment": "Function with parameters",
+      "begin": "\\b(defp|defmacrop)\\b\\s*([_$a-z][$\\w]*[!?]?)\\s*\\(",
+      "name": "meta.function.definition.elixir",
+      "beginCaptures": {
+        "1": {
+          "name": "keyword.control.elixir"
+        },
+        "2": {
+          "name": "variable.other.readwrite"
+        }
+      },
+      "end": "\\)",
+      "patterns": [
+        {
+          "include": "$self"
+        },
+        {
+          "include": "#function_parameter"
+        }
+      ]
+    },
+    {
+      "comment": "Function without parameters",
+      "match": "\\b(defp|defmacrop)\\b\\s*([_$a-z][$\\w]*[!?]?)",
+      "name": "meta.function.definition.elixir",
+      "captures": {
+        "1": {
+          "name": "keyword.control.elixir"
+        },
+        "2": {
+          "name": "variable.other.readwrite"
+        }
+      }
+    },
+    {
+      "match": "\\b_([\\w]+[?!]?)",
+      "name": "comment.unused.elixir"
+    }
+  ],
+  
+  "scopeName": "source.elixir.custom",
+  "repository": {
+    "escaped_char": {
+      "match": "\\\\(?:[0-7]{1,3}|x[\\da-fA-F]{1,2}|.)",
+      "name": "constant.character.escape.elixir"
+    },
+    "function_parameter_typed": {
+      "match": "(\\:\\s([^\\,|\\s]+))*?(=\\)|\\,|\\s)",
+      "name": "variable.other.constant.elixir"
+    }
+  }
+}

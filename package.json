@@ -1,0 +1,43 @@
+{
+    "name": "elixir-custom-highlighting",
+    "displayName": "Elixir Custom Highlighting",
+    "description": "Syntax highlighting for deft and defpt",
+    "version": "0.1.0",
+    "author": "Helder Sousa",
+    "publisher": "andridus",
+    "license": "MIT",
+    "icon": "images/logo.png",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/andridus/vscode-elixir-custom-highlighting.git"
+    },
+    "engines": {
+        "vscode": "^1.25.1"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [
+            {
+                "id": "elixir",
+                "aliases": [
+                    "Elixir",
+                    "Elixir Typed"
+                ],
+                "extensions": [
+                    ".ex"
+                ]
+            }
+        ],
+        "grammars": [
+            {
+                "scopeName": "source.elixir.custom",
+                "path": "./syntaxes/elixir.json",
+                "injectTo": [
+                    "source.elixir"
+                ]
+            }
+        ]
+    }
+}
