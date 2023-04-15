@@ -25,9 +25,29 @@
       ]
     },
     {
-      "comment": "Typed Function without parameters",
+      "comment": "Function with parameters",
+      "begin": "\\b(deft|defmacrot)\\b\\s*([_$a-z][$\\w]*[!?]?)\\s*\\(",
+      "beginCaptures": {
+        "1": {
+          "name": "keyword.control.elixir"
+        },
+        "2": {
+          "name": "entity.name.function.elixir"
+        }
+      },
+      "end": "\\)",
+      "patterns": [
+        {
+          "include": "$self"
+        },
+        {
+          "include": "#function_parameter"
+        }
+      ]
+    },
+    {
+      "comment": "Function without parameters",
       "match": "\\b(deft|defmacrot)\\b\\s*([_$a-z][$\\w]*[!?]?)",
-      "name": "meta.function.definition.elixir",
       "captures": {
         "1": {
           "name": "keyword.control.elixir"
@@ -38,9 +58,8 @@
       }
     },
     {
-      "comment": "Typed Private Function with parameters",
-      "begin": "\\b(defpt)\\b\\s*([_$a-z][$\\w]*[!?]?)\\s*\\(",
-      "name": "meta.function.definition.elixir",
+      "comment": "Function with parameters",
+      "begin": "\\b(defpt|defmacropt)\\b\\s*([_$a-z][$\\w]*[!?]?)\\s*\\(",
       "beginCaptures": {
         "1": {
           "name": "keyword.control.elixir"
@@ -55,14 +74,13 @@
           "include": "$self"
         },
         {
-          "include": "#function_parameter_typed"
+          "include": "#function_parameter"
         }
       ]
     },
     {
-      "comment": "Typed Function without parameters",
-      "match": "\\b(defpt|defmacropt)\\b\\s*([_$a-z][$\\w]*[!?]?)",
-      "name": "meta.function.definition.elixir",
+      "comment": "Function without parameters",
+      "match": "\\b(defpt|defmacropt)\\b\\s*([_$a-z][$\\w]*[!?]?)\\b\\s*([_$a-z][$\\w]*[!?]?)",
       "captures": {
         "1": {
           "name": "keyword.control.elixir"
@@ -112,7 +130,7 @@
       "name": "comment.unused.elixir"
     }
   ],
-  
+
   "scopeName": "source.elixir.custom",
   "repository": {
     "escaped_char": {
@@ -120,7 +138,7 @@
       "name": "constant.character.escape.elixir"
     },
     "function_parameter_typed": {
-      "match": "(\\:\\s([^\\,|\\s]+))*?(=\\)|\\,|\\s)",
+      "match": "(\\:{1,2}\\s([^\\,|\\s\\)]+))",
       "name": "variable.other.constant.elixir"
     }
   }

@@ -2,7 +2,7 @@
     "name": "elixir-custom-highlighting",
     "displayName": "Elixir Custom Highlighting",
     "description": "Syntax highlighting for deft and defpt",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "author": "Helder Sousa",
     "publisher": "andridus",
     "license": "MIT",
